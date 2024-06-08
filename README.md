@@ -96,3 +96,7 @@ We store the original terminal attributes in a global variable, `orig_termios`. 
 Now, the program will quit as soon as you press `q`.
 
 
+
+
+
+
