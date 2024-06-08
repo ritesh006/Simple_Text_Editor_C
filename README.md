@@ -73,15 +73,15 @@ structure defined in termino.h raw is a varibale for structure, tcgettattr(STDIN
 arameter associate with termial gets back and pass to a structure variable of struct terminos
 terminos struct contains input mode flag, aoutput mode flags, control mode flags 
 
-# Fixing Terminal Echo Issues
+### Fixing Terminal Echo Issues
 
 After a program quits, your terminal may not echo what you type. Press **Ctrl-C**, then type `reset` and press **Enter**. If that fails, restart your terminal emulator.
 
-# Modifying Terminal Attributes
+### Modifying Terminal Attributes
 
 You can read terminal attributes into a `termios` struct using `tcgetattr()`. After modifying them, apply the changes with `tcsetattr()`. Using `TCSAFLUSH` ensures all pending output is written and discards unread input.
 
-## Disabling Raw Mode at Exit
+### Disabling Raw Mode at Exit
 
 Let’s be nice to the user and restore their terminal’s original attributes when our program exits. We’ll save a copy of the `termios` struct in its original state, and use `tcsetattr()` to apply it to the terminal when the program exits.
 
