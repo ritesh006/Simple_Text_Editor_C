@@ -2,46 +2,45 @@
 
 ### Explanation
 
-### read() declaration 
+### `read()` Declaration 
 
 `read (int __fd, void *__buf, size_t __nbytes)`
 
-this function requried a 1st argument is standard file I/O, 2nd address buffer, and 3rd is number of bytes 
-required to read.
+This function requires three arguments:
+1. **1st argument**: standard file I/O
+2. **2nd argument**: address buffer
+3. **3rd argument**: number of bytes required to read
 
-here we are using thi function like below with argument
+Here we are using this function like below with arguments:
 
 `read(STDIN_FILENO, &c , 1);`
 
-STDIN_FILENO = standard input file
-&c = 1byte buffer 
-1 = buffer size
+- **STDIN_FILENO** = standard input file
+- **&c** = 1-byte buffer 
+- **1** = buffer size
 
 `while(read(STDIN_FILENO, &c , 1) == 1);`
-read() returns the number of bytes that it read, and will return 0 when it reaches the end of a file.
-so while loop continue unitl its false means O or EOF (end of file)
 
-### Usage of STDIN_FILENO
-STDIN_FILENO is commonly used with lower-level I/O functions such as read and write, which operate directly on file descriptors. This is in contrast to higher-level I/O functions like fscanf and fgets, which operate on FILE * streams.
+`read()` returns the number of bytes that it read, and will return 0 when it reaches the end of a file. So, the while loop continues until it's false, meaning 0 or EOF (end of file).
 
+### Usage of `STDIN_FILENO`
 
-### Entering raw mode
+`STDIN_FILENO` is commonly used with lower-level I/O functions such as `read` and `write`, which operate directly on file descriptors. This is in contrast to higher-level I/O functions like `fscanf` and `fgets`, which operate on `FILE *` streams.
 
-Typical program when we run that time terminal starts in ***conical mode*** also called ***cooked mode*** for taking input like a simple program adding a two number when we press number after pressing ***ENTER*** only it will feed to program but our case its not possible 
-we need immedigate response whenver key pressed it has to pass on thats whya we need to enable
-***raw mode*** entering in raw mode is not much easy for now if you want to exit you can press
-***ctrl + c*** to quit
+### Entering Raw Mode
 
+Typically, when a program runs, the terminal starts in **conical mode** (also called **cooked mode**) for taking input. For example, in a simple program adding two numbers, when we press a number and then press **ENTER**, it will be fed to the program. However, in our case, we need an immediate response whenever a key is pressed, hence we need to enable **raw mode**. Entering raw mode is not easy, but for now, if you want to exit, you can press **Ctrl + C** to quit.
 
-### Press q to quit?
+### Press `q` to Quit
 
-` while (read(STDIN_FILENO, &c, 1) == 1 && c != 'q'); `
-for time being we have added letter or charactor 'q' if you want to exit from file you can press 'q' and hit ***ENTER** 
+`while (read(STDIN_FILENO, &c, 1) == 1 && c != 'q');`
 
-### Turn off echoing
+For the time being, we have added the letter or character **'q'**. If you want to exit the file, you can press 'q' and hit **ENTER**.
 
-struct termios, tcgetattr(), tcsetattr(), ECHO, and TCSAFLUSH all come from <termios.h> 
-The ECHO feature is used for when you type anything it get back to terminal and able to see what you are typing
-its very useful for ***cooked mode*** or ***cononical mode***
+### Turn off Echoing
 
+`struct termios`, `tcgetattr()`, `tcsetattr()`, `ECHO`, and `TCSAFLUSH` all come from `<termios.h>`. The **ECHO** feature is used when you type anything, it gets back to the terminal and you can see what you are typing. It's very useful for **cooked mode** or **conical mode**.
 
+After enabling the echo mode, you will not see the print on the terminal, like in **Linux** while entering a **password**, it's blank.
+
+After the program quits, depending on your **shell**, you may find your **terminal** is still not **echoing** what you type. Don't worry, it will still listen to what you type. Just press **Ctrl-C** to start a fresh line of input to your shell, and type in **reset** and press **Enter**. This resets your terminal back to normal in most cases. Failing that, you can always restart your **terminal emulator**. We'll fix this whole problem in the next step.
