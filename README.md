@@ -1,8 +1,8 @@
 # Simple_Text_Editor_C
 
-# Explanation
+### Explanation
 
-# read() declaration 
+### read() declaration 
 
 `read (int __fd, void *__buf, size_t __nbytes)`
 
@@ -21,7 +21,7 @@ STDIN_FILENO = standard input file
 read() returns the number of bytes that it read, and will return 0 when it reaches the end of a file.
 so while loop continue unitl its false means O or EOF (end of file)
 
-# Usage of STDIN_FILENO
+### Usage of STDIN_FILENO
 STDIN_FILENO is commonly used with lower-level I/O functions such as read and write, which operate directly on file descriptors. This is in contrast to higher-level I/O functions like fscanf and fgets, which operate on FILE * streams.
 
 
@@ -33,9 +33,13 @@ we need immedigate response whenver key pressed it has to pass on thats whya we 
 ***ctrl + c*** to quit
 
 
-# Press q to quit?
+### Press q to quit?
 
 ` while (read(STDIN_FILENO, &c, 1) == 1 && c != 'q'); `
 for time being we have added letter or charactor 'q' if you want to exit from file you can press 'q' and hit ***ENTER** 
 
+### Turn off echoing
 
+struct termios, tcgetattr(), tcsetattr(), ECHO, and TCSAFLUSH all come from <termios.h> 
+The ECHO feature is used for when you type anything it get back to terminal and able to see what you are typing
+its very useful for ***cooked mode*** or ***cononical mode***
