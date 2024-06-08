@@ -2,19 +2,20 @@
 
 # read() declaration 
 
-  read (int __fd, void *__buf, size_t __nbytes)
+`read (int __fd, void *__buf, size_t __nbytes)`
+
 this function requried a 1st argument is standard file I/O, 2nd address buffer, and 3rd is number of bytes 
 required to read.
 
 here we are using thi function like below with argument
 
-# read(STDIN_FILENO, &c , 1);
+`read(STDIN_FILENO, &c , 1);`
 
 STDIN_FILENO = standard input file
 &c = 1byte buffer 
 1 = buffer size
 
- 'while(read(STDIN_FILENO, &c , 1) == 1);'
+`while(read(STDIN_FILENO, &c , 1) == 1);`
 read() returns the number of bytes that it read, and will return 0 when it reaches the end of a file.
 so while loop continue unitl its false means O or EOF (end of file)
 
@@ -29,8 +30,10 @@ we need immedigate response whenver key pressed it has to pass on thats whya we 
 ***raw mode*** entering in raw mode is not much easy for now if you want to exit you can press
 ***ctrl + c*** to quit
 
-#   while (read(STDIN_FILENO, &c, 1) == 1 && c != 'q');
 
+# Press q to quit?
+
+` while (read(STDIN_FILENO, &c, 1) == 1 && c != 'q'); `
 for time being we have added letter or charactor 'q' if you want to exit from file you can press 'q' and hit ***ENTER** 
 
 
