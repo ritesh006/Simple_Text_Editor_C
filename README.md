@@ -43,3 +43,5 @@ for time being we have added letter or charactor 'q' if you want to exit from fi
 struct termios, tcgetattr(), tcsetattr(), ECHO, and TCSAFLUSH all come from <termios.h> 
 The ECHO feature is used for when you type anything it get back to terminal and able to see what you are typing
 its very useful for ***cooked mode*** or ***cononical mode***
+
+
