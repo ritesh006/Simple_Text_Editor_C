@@ -1,5 +1,3 @@
-# Simple_Text_Editor_C
-
 # Explanation
 
 # read() declaration 
